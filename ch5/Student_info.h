@@ -3,6 +3,7 @@
 
 // Student_info header file
 #include <iostream>
+#include <list>
 #include <string>
 #include <vector>
 
@@ -14,7 +15,7 @@ struct Student_info {
 
 bool compare(const Student_info&, const Student_info&);
 bool fgrade(const Student_info&);
-std::vector<Student_info> extract_fails(std::vector<Student_info>&);
+std::list<Student_info> extract_fails(std::list<Student_info>&);
 std::istream& read(std::istream&, Student_info&);
 std::istream& read_hw(std::istream&, std::vector<double>&);
 #endif

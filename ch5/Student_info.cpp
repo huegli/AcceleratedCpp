@@ -1,8 +1,12 @@
 // source file for Student_info-related functions
+#include <list>
+#include <vector>
 #include "Student_info.h"
 #include "grade.h"
 
-using std::istream;     using std::vector;
+using std::istream;     
+using std::list;
+using std::vector;
 
 bool compare(const Student_info& x, const Student_info& y)
 {
@@ -15,18 +19,17 @@ bool fgrade(const Student_info& s)
     return grade(s) < 60;
 }
 
-// seperate passing and failing student records, first try
-vector<Student_info> extract_fails(vector<Student_info>& students)
+// version 4: list instead of vector
+list<Student_info> extract_fails(list<Student_info>& students)
 {
-    vector<Student_info> pass, fail;
-    vector<Student_info>::iterator iter = students.begin();
+    list<Student_info> fail;
+    list<Student_info>::iterator iter = students.begin();
 
-    // invariant: elements [0, i) of students represent passing grades
     while (iter != students.end()) {
         if (fgrade(*iter)) {
             fail.push_back(*iter);
-            students.erase(iter);
-        } else
+            iter = students.erase(iter);
+        } else 
             ++iter;
     }
     return fail;
