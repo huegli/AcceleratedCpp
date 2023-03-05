@@ -19,15 +19,15 @@ bool fgrade(const Student_info& s)
 vector<Student_info> extract_fails(vector<Student_info>& students)
 {
     vector<Student_info> pass, fail;
-    vector<Student_info>::size_type i = 0;
+    vector<Student_info>::iterator iter = students.begin();
 
     // invariant: elements [0, i) of students represent passing grades
-    while (i != students.size()) {
-        if (fgrade(students[i])) {
-            fail.push_back(students[i]);
-            students.erase(students.begin() + i);
+    while (iter != students.end()) {
+        if (fgrade(*iter)) {
+            fail.push_back(*iter);
+            students.erase(iter);
         } else
-            ++i;
+            ++iter;
     }
     return fail;
 }
