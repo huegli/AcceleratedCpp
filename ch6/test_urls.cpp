@@ -12,7 +12,7 @@ int main() {
 
     string s = "bla, bla, check out http://google.com and https://kde.org";
 
-    vector v = find_urls(s);
+    auto v = find_urls(s);
 
     for (auto s : v) {
         cout << s << endl;
